@@ -1,0 +1,34 @@
+version: '2'
+services:
+  dns:
+    build:
+      context: ./dns
+      dockerfile: Dockerfile
+    tty: true
+    networks:
+      my_network:
+        ipv4_address: 192.168.1.4
+    volumes:
+      - './dns/src:/dns-dir-inside-container'
+  dhcp:
+    build:
+      context: ./dhcp
+      dockerfile: Dockerfile
+    tty: true
+    networks:
+      my_network:
+        ipv4_address: 192.168.1.5
+    volumes:
+      - './dhcp:/dhcp-inside-container'
+
+volumes:
+  backend: null
+
+networks:
+  my_network:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 192.168.1.0/24
+          gateway: 192.168.1.254
+
