@@ -1,0 +1,18 @@
+$ORIGIN .
+$TTL 604800	; 1 week
+1.168.192.in-addr.arpa	IN SOA	dns.dnsserver.io. admin.dnsserver.io. (
+				3          ; serial
+				604800     ; refresh (1 week)
+				86400      ; retry (1 day)
+				2419200    ; expire (4 weeks)
+				604800     ; minimum (1 week)
+				)
+			NS	dnsDhcp.dnsserver.io.
+$ORIGIN 1.168.192.in-addr.arpa.
+1			PTR	host1.dnsserver.io.
+100			PTR	dns.dnsserver.io.
+$TTL 3600	; 1 hour
+104			PTR	host4.dnsserver.io.
+$TTL 604800	; 1 week
+2			PTR	host2.dnsserver.io.
+

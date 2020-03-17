@@ -7,9 +7,9 @@ services:
     tty: true
     networks:
       my_network:
-        ipv4_address: 192.168.1.4
-    volumes:
-      - './dns/src:/dns-dir-inside-container'
+        ipv4_address: 192.168.1.100
+
+
   dhcp:
     build:
       context: ./dhcp
@@ -17,12 +17,8 @@ services:
     tty: true
     networks:
       my_network:
-        ipv4_address: 192.168.1.5
-    volumes:
-      - './dhcp:/dhcp-inside-container'
+        ipv4_address: 192.168.1.101
 
-volumes:
-  backend: null
 
 networks:
   my_network:
