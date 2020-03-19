@@ -6,7 +6,7 @@ RUN apt-get update && apt-get install -y isc-dhcp-server
 COPY rndc.key /etc/dhcp/ddns-keys/rndc.key
 COPY dhcpd.conf /etc/dhcp/dhcpd.conf
 COPY isc-dhcp-server /etc/default/isc-dhcp-server
-#RUN ["touch", "/var/lib/dhcp/dhcpd.leases"]
+COPY isc-dhcp-server /etc/default/dhcpd.conf
 
-CMD service isc-dhcp-server stop
-CMD service isc-dhcp-server start
+#CMD service isc-dhcp-server stop
+CMD  service isc-dhcp-server restart && tail -F /var/log/bind/error.log
